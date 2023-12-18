@@ -1,0 +1,57 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                        Universal Breakout.mq5   |
+//|                                      Developed by Forex Robot    |
+//|                                      Easy Team - forexroboteasy.com |
+//+------------------------------------------------------------------+
+#property copyright 'Forex Robot Easy Team - forexroboteasy.com'
+#property link      'forexroboteasy.com'
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Place initialization code here
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Place deinitialization code here
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Place trading logic code here
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnStart()
+{
+    // Place start-up code here
+    double price = Ask;
+    double stopLoss = price - 0.0010;
+    double takeProfit = price + 0.0010;
+
+    int ticket = OrderSend(Symbol(), OP_BUY, 0.1, price, 10, stopLoss, takeProfit, 'Universal Breakout', 0, 0, clrGreen);
+    if(ticket < 0)
+    {
+        Print('Error opening order: ', GetLastError());
+    }
+    else
+    {
+        Print('Order opened successfully');
+    }
+}
+
+//+------------------------------------------------------------------+
